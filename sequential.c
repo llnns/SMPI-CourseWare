@@ -28,18 +28,8 @@ int main(int argc, char** argv){
     }
   }
 
-  printf("D:%d\n", data[100]);
-
   // Saving
-  FILE *fp;
-  fp = fopen("julia_sequential.bmp", "w+");
-  write_bmp_header(fp, width, height);
-
-  int t = 0;
-  for(int i=0; i < width*height*3; i++){
-    t += fwrite(data+i, sizeof(char), 1, fp);
-  }
-
-  fclose(fp);
+  save_julia_set("julia_sequential.bmp", width, height, data);
+  
   return 0;
 }

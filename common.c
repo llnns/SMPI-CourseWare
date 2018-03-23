@@ -115,4 +115,30 @@ int compute_julia_pixel(int x, int y, int width, int height, float tint_bias, un
   return 0;
 }
 
+/* save_julia_set(): Save data as a bmp file
+ *
+ *   In:
+ *      name: name of file to save
+ *      (width, height): image dimensions
+ *      data: array with rgb data to save
+ *
+ *   Return:
+ *      0 on success, -1 on failure
+ *
+ */
+
+int save_julia_set(char* name, int width, int height, unsigned char* data){
+  FILE *fp;
+  fp = fopen(name, "w+");
+  write_bmp_header(fp, width, height);
+
+  int t = 0;
+  for(int i=0; i < width*height*3; i++){
+    t += fwrite(data+i, sizeof(char), 1, fp);
+  }
+
+  fclose(fp);
+  return 0;
+}
+
 #endif

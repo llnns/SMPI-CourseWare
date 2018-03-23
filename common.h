@@ -33,3 +33,18 @@ int write_bmp_header(FILE *f, int width, int height);
  */
 
 int compute_julia_pixel(int x, int y, int width, int height, float tint_bias, unsigned char *rgb);
+
+
+/* save_julia_set(): Save data as a bmp file
+ *
+ *   In:
+ *      name: name of file to save
+ *      (width, height): image dimensions
+ *      data: array with rgb data to save
+ *
+ *   Return:
+ *      0 on success, -1 on failure
+ *
+ */
+ 
+int save_julia_set(char* name, int width, int height, unsigned char* data);
